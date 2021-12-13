@@ -2,40 +2,31 @@ import * as React from "react"
 import {
   ChakraProvider,
   Box,
-  Text,
-  Link,
+  Heading,
+  Textarea,
   VStack,
-  Code,
-  Grid,
-  theme,
+  ButtonGroup,
+  Button
 } from "@chakra-ui/react"
-import { ColorModeSwitcher } from "./ColorModeSwitcher"
-import { Logo } from "./Logo"
 
 import { Font } from './lib/font'
+import { theme } from './lib/theme'
+import Main from './layouts/main'
 
-export const App = () => (
+export const App: React.FC = () => (
   <ChakraProvider theme={theme}>
     <Font />
-    <Box textAlign="center" fontSize="xl">
-      <Grid minH="100vh" p={3}>
-        <ColorModeSwitcher justifySelf="flex-end" />
-        <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
-          <Link
-            color="teal.500"
-            href="https://chakra-ui.com"
-            fontSize="2xl"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn Chakra
-          </Link>
-        </VStack>
-      </Grid>
-    </Box>
+    <Main>
+      <VStack pt='100px' pb={10} px={{ base: 4, md: 8 }} w='100%'>
+        <Heading fontFamily='heading' as='h1' fontSize='4xl' mb={10}>Turing Machine Simulator</Heading>
+        <ButtonGroup spacing={{ base: 2, md: 4 }} w='100%' justifyContent='center'>
+          <Button colorScheme='green' p={4} mr='-px' w={{ base: 'sm', md: 'sm' }}>Run</Button>
+          <Button w={{ base: 'sm', md: 'md' }} colorScheme='red'>Step</Button>
+        </ButtonGroup>
+        <Box mt={4} d='block' w='100%' px={{ base: 0, md: '15%' }}>
+          <Textarea resize='vertical' fontFamily='mono' borderWidth={2} w='100%' h='400px' px={2} mt={4} placeholder="Here is script for turing machine" size='lg' />
+        </Box>
+      </VStack>
+    </Main>
   </ChakraProvider>
 )
