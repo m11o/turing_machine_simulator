@@ -47,6 +47,7 @@ const Simulator: React.FC<SimulatorProps> = ({ initValue }) => {
     const simulatorContainerDom = document.getElementById('sumulator-container')
     if (simulatorContainerDom) simulatorContainerDom.remove()
   }
+
   const buildValues = (initValue: string): string[] => {
     const defaultValuesSize = 6
     refreshContainer()
