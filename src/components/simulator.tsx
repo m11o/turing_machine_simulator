@@ -14,10 +14,12 @@ const ValueContainer: React.FC<ValueContainerProps> = ({ value, currentBox=false
   return (
     <Text
       py={4}
-      px={6}
+      px={value === '' ? '30px' : 6}
       bgColor={currentBox ? 'green.400' : ''}
       border='1px'
       borderColor='gray.200'
+      h={16}
+      w={16}
     >
       {value ? value : ''}
     </Text>
@@ -29,19 +31,36 @@ type ValueContainerListProps = {
 }
 const ValueContainerList: React.FC<ValueContainerListProps> = ({ values }) => {
   return (
-    <Flex direction='row' justifyContent='center'>
+    <Flex direction='row' justifyContent='center' id='simulator-container'>
       {values.length ? (
-        values.map(value => <ValueContainer value={value} key={value} />)
+        values.map((value, index) => <ValueContainer value={value} key={index} />)
       ) : ''}
     </Flex>
   )
 }
 
-const Simulator = () => {
+type SimulatorProps = {
+  initValue: string
+}
+const Simulator: React.FC<SimulatorProps> = ({ initValue }) => {
+  const refreshContainer = (): void => {
+    const simulatorContainerDom = document.getElementById('sumulator-container')
+    if (simulatorContainerDom) simulatorContainerDom.remove()
+  }
+  const buildValues = (initValue: string): string[] => {
+    const defaultValuesSize = 6
+    refreshContainer()
+    if (!initValue.length) return Array(defaultValuesSize).fill('')
+
+    let stringList: string[] = Array.from(initValue)
+    stringList.push('')
+    return stringList
+  }
+
   return (
     <Box>
       <VStack mb={10}>
-        <ValueContainerList values={['1', '7', '3', '4']} />
+        <ValueContainerList values={buildValues(initValue)} />
       </VStack>
     </Box>
   )
