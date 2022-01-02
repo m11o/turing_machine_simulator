@@ -59,7 +59,7 @@ const Simulator: React.FC<SimulatorProps> = ({ initValue }) => {
   }
 
   return (
-    <Box>
+    <Box w='100%' overflowX='auto'>
       <VStack mb={10}>
         <ValueContainerList values={buildValues(initValue)} />
       </VStack>
