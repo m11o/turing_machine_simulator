@@ -14,6 +14,7 @@ import { Font } from './lib/font'
 import { theme } from './lib/theme'
 import Main from './layouts/main'
 import Simulator from "./components/simulator"
+import ScriptArea from "./components/script_area"
 
 export const App: React.FC = () => {
   const [initValue, setInitValue] = useState('')
@@ -34,18 +35,7 @@ export const App: React.FC = () => {
           </ButtonGroup>
           <Box mt={4} d='block' w='100%' px={{ base: 0, md: '15%' }}>
             <Input placeholder='initial value' mt={4} borderWidth={2} w='100%' onChange={handleInitValue} fontFamily='mono' />
-            <Textarea
-              resize='vertical'
-              fontFamily='mono'
-              borderWidth={2}
-              w='100%'
-              h='400px'
-              px={2}
-              mt={2}
-              placeholder="Here is script for turing machine"
-              size='lg'
-              onChange={handleScript}
-            />
+            <ScriptArea />
           </Box>
         </VStack>
       </Main>
