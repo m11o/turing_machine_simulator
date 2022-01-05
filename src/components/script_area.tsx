@@ -3,6 +3,7 @@ import {
   Textarea
 } from '@chakra-ui/react'
 
+const scriptLineFormat = /([a-z]_[0-9]),\s?([\W]),\s?([\W]),\s?([R|L]),\s?([a-z]_[0-9])/
 interface ScriptAreaProps {
   setWrittenScript: (bool: boolean) => void
 }
