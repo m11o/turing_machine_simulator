@@ -2,29 +2,10 @@ import React from 'react'
 import {
   Box,
   VStack,
-  Text,
   Flex
 } from '@chakra-ui/react'
 
-type ValueContainerProps = {
-  value: string,
-  currentBox?: boolean
-}
-const ValueContainer: React.FC<ValueContainerProps> = ({ value, currentBox=false }) => {
-  return (
-    <Text
-      py={4}
-      px={value === '' ? '30px' : 6}
-      bgColor={currentBox ? 'green.400' : ''}
-      border='1px'
-      borderColor='gray.200'
-      h={16}
-      w={16}
-    >
-      {value ? value : ''}
-    </Text>
-  )
-}
+import ValueContainer from './simulator/value_container'
 
 type ValueContainerListProps = {
   values: string[]
